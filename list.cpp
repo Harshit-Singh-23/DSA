@@ -393,7 +393,7 @@ bool isPalindrome(node* &head){
 }
 
 void fold(node* &head){
-    if(head == NULL || head -> next == NULL) return true;
+    if(head == NULL || head -> next == NULL) return;
 
     node* mid = midnode(head);
     node* nhead = mid->next;
@@ -411,9 +411,14 @@ void fold(node* &head){
         f1 = c1->next;
         f2 = c2->next;
 
-        // 
-    }
+        //Links
+        c1->next = c2;
+        c2->next = f1;
 
+        //move
+        c1 = f1;
+        c2 = f2;
+    }
 }
 
 void printlist(node* n){
@@ -459,10 +464,8 @@ cout << endl;
 //  removeduplicates(head);
 // oddevenlist(head);
 // kreverse(head, 3);
-cout << isPalindrome(head) << endl;
-
+// cout << isPalindrome(head) << endl;
+fold(head);
 printlist(head);
     return 0;
 }
-
-fkjdasbjsdghlsd;f
