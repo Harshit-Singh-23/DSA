@@ -246,7 +246,7 @@ int kthfromlast(node* &head, int k){                 // two pointers used s mean
     return s->data;
 }
 
-int midoflist(node* &head){
+int midoflist(node* &head){                            // gives the value in the mid node
     node* slow = head;
     node* fast = head;
     while(fast->next != NULL && fast->next->next != NULL){
@@ -255,6 +255,17 @@ int midoflist(node* &head){
     }
     return slow->data;
 }
+
+node* midnode(node* &head){                           // gives the mid node.
+    node* slow = head;
+    node* fast = head;
+    while(fast->next != NULL && fast->next->next != NULL){
+        slow = slow -> next;
+        fast = fast->next->next;
+    }
+    return slow;
+}
+
 
 node* merge2sortedlists(node* &head1, node* &head2){
     node* one = head1;
@@ -322,37 +333,63 @@ void oddevenlist(node* &head){                   // places all the odd numbers f
     head = odd;
 }
 
-void kreverse(node* &head, int k){
-    node* prev = NULL;
+// void kreverse(node* &head, int k){
+//     node* prev = NULL;
 
-    while(sizeoflist(head) > 0){
-        node* curr = NULL;
-        if(sizeoflist(head) >= k){
-            for(int i = 0; i < k; i++){
-                int val = getfirst(head);
-                deletehead(head);
-                addfirst(curr, val);
-            }
-            else{
-                int s = sizeoflist(head);
-                for(int i = 0; i < s; i++){
-                    int val = getfirst(head);
-                    deletehead(head);
-                    addlast(curr, val);
-                }
-            }
+//     while(sizeoflist(head) > 0){
+//         node* curr = NULL;
+//         if(sizeoflist(head) >= k){
+//             for(int i = 0; i < k; i++){
+//                 int val = getfirst(head);
+//                 deletehead(head);
+//                 addfirst(curr, val);
+//             }
+//             else{
+//                 int s = sizeoflist(head);
+//                 for(int i = 0; i < s; i++){
+//                     int val = getfirst(head);
+//                     deletehead(head);
+//                     addlast(curr, val);
+//                 }
+//             }
+//         }
+//         if(prev == NULL){
+//                 prev = curr;
+//             }
+//             else{
+//                 node* tail1 = tail(prev);
+//                 node* tail2 = tail(curr);
+//                 tail1->next = curr;
+//                 tail1 = tail2;
+//             }
+//         head = prev;
+//     }
+// }
+
+bool isPalindrome(node* &head){
+    if(head == NULL || head -> next == NULL) return true;
+
+    node* mid = midnode(head);
+    node* nhead = mid->next;
+    mid->next = NULL;
+
+    nhead = reverse(nhead);
+    node* c1 = head;
+    node* c2 = nhead;
+
+    bool res = true;
+    while(c2 != NULL){
+        if(c1->data != c2->data){
+            res = false;
+            break;
         }
-        if(prev == NULL){
-                prev = curr;
-            }
-            else{
-                node* tail1 = tail(prev);
-                node* tail2 = tail(curr);
-                tail1->next = curr;
-                tail1 = tail2;
-            }
-        head = prev;
+        c1 = c1->next;
+        c2 = c2->next;
     }
+    nhead = reverse(nhead);
+    mid->next = nhead;
+
+    return res;
 }
 
 void printlist(node* n){
@@ -367,15 +404,15 @@ int main(){
 int n;
 node* head = NULL;
 
-addlast(head, 1);
-addlast(head, 2);
-addlast(head, 3);
-addlast(head, 4);
+// addlast(head, 1);
+// addlast(head, 2);
+// addlast(head, 3);
+// addlast(head, 4);
 // addfirst(head, 5);    
 
-for(int i = 1; i < 10; i++){
-    // cin >> n;
-    addlast(head, i+4);
+for(int i = 0; i < 7; i++){
+    cin >> n;
+    addlast(head, n);
 }
 printlist(head);
 // cout << search(head, 56);
@@ -397,7 +434,8 @@ cout << endl;
 // cout << z;
 //  removeduplicates(head);
 // oddevenlist(head);
-kreverse(head, 3);
+// kreverse(head, 3);
+cout << isPalindrome(head) << endl;
 
 printlist(head);
     return 0;
