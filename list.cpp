@@ -423,7 +423,7 @@ cout << endl;
 // cout << endl << "size of list is : " << sizeoflist(head);
 // cout << endl << "first element is : " << getfirst(head);
 // cout << endl << "last element is : " << getlast(head);
-// cout << endl << getAt(head, 7);
+// cout << endl << getAt(head, 7);h
 // reverse(head);
 // addAt(head, 4, 89);
 // node* x = reversedata(head);
