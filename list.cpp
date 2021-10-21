@@ -392,6 +392,30 @@ bool isPalindrome(node* &head){
     return res;
 }
 
+void fold(node* &head){
+    if(head == NULL || head -> next == NULL) return true;
+
+    node* mid = midnode(head);
+    node* nhead = mid->next;
+    mid->next = NULL;
+
+    nhead = reverse(nhead);
+
+    node* c1 = head;
+    node* c2 = nhead;
+    node* f1 = NULL;
+    node* f2 = NULL;
+
+    while(c2 != NULL){
+        //backup
+        f1 = c1->next;
+        f2 = c2->next;
+
+        // 
+    }
+
+}
+
 void printlist(node* n){
     node* temp = n;
     while(temp != NULL){
