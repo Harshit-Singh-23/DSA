@@ -465,6 +465,8 @@ cout << endl;
 // oddevenlist(head);
 // kreverse(head, 3);
 // cout << isPalindrome(head) << endl;
+
+//trying
 fold(head);
 printlist(head);
     return 0;
