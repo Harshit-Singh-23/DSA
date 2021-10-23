@@ -187,18 +187,6 @@ int max_area_histogram(vector<int> arr){
   return maxarea;
 }
 
-  int maxarea = 0;
-  for(int i = 0; i < arr.size()-1; i++){
-    int width = rb[i] - lb[i] - 1;
-    int area = width * arr[i];
-    if(area > maxarea){
-      maxarea = area;
-    }
-  }
-  return maxarea;
-}
-
-
 int main()
 {
     // string str;
