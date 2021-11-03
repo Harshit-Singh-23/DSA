@@ -333,6 +333,19 @@ void oddevenlist(node* &head){                   // places all the odd numbers f
     head = odd;
 }
 
+node* addFirst(node* &head){
+    node* th = NULL;
+    node* tt = NULL;
+
+    if(th == NULL){
+        node
+    }
+}
+
+node* reverselist(node* &head){
+    node* curr = null;
+}
+
 // void kreverse(node* &head, int k){
 //     node* prev = NULL;
 
@@ -421,6 +434,44 @@ void fold(node* &head){
     }
 }
 
+  int reverseNumber(int n){
+    int ans = 0;
+    while(n != 0){
+        int lastDigit = n % 10;
+        n /= 10;
+        
+        ans = ans * 10 + lastDigit;
+    }
+        
+ return ans;
+    
+}
+
+int sumof2numbers(node* & l1, node* &l2){
+    int num1 = 0, num2 = 0;
+        while(l1 != NULL){
+            int i = 0;
+            int x = l1 -> data;
+            num1 = (10*i + x) + num1;            
+            l1 = l1 -> next;
+            i++;
+        }
+        while(l2 != NULL){
+            int i = 0;
+            int x = l2 -> data;
+            num2 = (10*i + x) + num2;            
+            l2 = l2 -> next;
+            i++;
+        }
+        num1 = reverseNumber(num1);
+        num2 = reverseNumber(num2);
+        
+        int ans = num1 + num2;
+        ans = reverseNumber(ans);
+
+        return ans;
+}
+
 void printlist(node* n){
     node* temp = n;
     while(temp != NULL){
@@ -432,6 +483,7 @@ void printlist(node* n){
 int main(){
 int n;
 node* head = NULL;
+node* head2 = NULL;
 
 // addlast(head, 1);
 // addlast(head, 2);
@@ -439,11 +491,16 @@ node* head = NULL;
 // addlast(head, 4);
 // addfirst(head, 5);    
 
-for(int i = 0; i < 7; i++){
+for(int i = 0; i < 3; i++){
     cin >> n;
     addlast(head, n);
 }
+for(int i = 0; i < 3; i++){
+    cin >> n;
+    addlast(head2, n);
+}
 printlist(head);
+printlist(head2);
 // cout << search(head, 56);
 // cout << endl << targetposition(head, 78);
 // deletelast(head);
@@ -465,9 +522,8 @@ cout << endl;
 // oddevenlist(head);
 // kreverse(head, 3);
 // cout << isPalindrome(head) << endl;
-
-//trying
-fold(head);
+// fold(head);
+cout << sumof2numbers(head, head2);
 printlist(head);
     return 0;
 }
