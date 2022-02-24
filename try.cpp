@@ -14,18 +14,6 @@ int trial(int arr[], int len){
 
 }
 
-int profit(int arr[], int len){
-    int count = 0;
-    int n = sizeof(arr)/sizeof(arr[0]);
-    int i = 0, j = n - 1;
-    while(i < j){
-        if(arr[j] - arr[i] > 0){
-            count++;
-        }
-        else if()
-     
-    }
-}
 
 int jump(int A[], int n) {
 	 if(n<2)return 0;
