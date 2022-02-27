@@ -1,17 +1,19 @@
-#include <iostream>                                    // stack class implementation using array
+#include <bits/stdc++.h>                                    // stack class implementation using array
 
 using namespace std;
 
 # define n 100
 
-class stack {
+class stack1 {
     int* arr;
     int top;
+    int min;
 
     public:
-    stack(){
+    stack1(){
         arr = new int[n];
         top = -1;
+        min = INT_MAX;
     }
 
     void push(int val){
@@ -21,6 +23,9 @@ class stack {
         }
         top++;
         arr[top] = val;
+        if(val < min){
+            min = val;
+        }
     }
 
     void pop(){
@@ -45,15 +50,19 @@ class stack {
         }
         else return false;
     }
+
+    int getmin(){
+        return min;
+    }
 };
 
 int main(){
 
-    stack st;
-    st.push(1);
+    stack1 st;
+    st.push(10);
     st.push(2);
-    st.push(3);
-    st.push(4);
+    st.push(30);
+    st.push(1);
     st.push(5);
     cout << "Top is : " << st.Top();
     st.pop();
@@ -61,10 +70,11 @@ int main(){
     st.pop();
     cout << endl << "Top is : " << st.Top();
     cout << endl << st.empty();
-    st.pop();
-    st.pop();
+
     cout << endl << "Top is : " << st.Top();
     cout << endl << st.empty();
+int m= st.getmin();
+    cout << endl << m;
 
 
 
